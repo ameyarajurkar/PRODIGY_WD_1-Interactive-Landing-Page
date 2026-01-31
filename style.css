@@ -1,0 +1,222 @@
+:root {
+    /* The New Aesthetic Palette */
+    --bg-main: #1a1a2e; /* Deep Royal Navy/Purple */
+    --bg-secondary: #16213e; /* Rich Slate Blue */
+    --accent: #4db5ff; /* Soft Electric Blue */
+    --text-primary: #ffffff;
+    --text-dim: #a2a2c2;
+    
+    /* A "Glow" Gradient for the whole site */
+    --aesthetic-gradient: radial-gradient(circle at top right, #1a1a2e, #16213e),
+                          radial-gradient(circle at bottom left, #0f3460, #1a1a2e);
+}
+
+body {
+    background: var(--bg-main);
+    background-image: var(--aesthetic-gradient);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    background-image: var(--aesthetic-gradient);
+    background-attachment: fixed; /* Crucial for the premium feel */
+    color: var(--text-primary);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+/* --- GLASSMORPHISM CLASS --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(211, 40, 148, 0.37);
+}
+
+/* --- SMART GLASS NAVBAR --- */
+#navbar {
+    position: fixed; width: 100%; padding: 30px;
+    display: flex; justify-content: center; z-index: 1000;
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+#navbar.scrolled {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    padding: 15px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+#navbar.nav-hidden { transform: translateY(-100%); }
+
+.nav-container { width: 100%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 700; color: #fff; letter-spacing: 2px; }
+.logo span { color: var(--accent); }
+.nav-links { list-style: none; display: flex; gap: 40px; }
+.nav-links a { text-decoration: none; color: rgba(255,255,255,0.5); transition: 0.3s; font-size: 0.9rem; }
+.nav-links a.active { color: var(--accent); font-weight: 700; }
+
+/* --- SECTIONS & REVEAL --- */
+.dark-section { padding: 120px 20px; background: var(--black); }
+.border-top { border-top: 1px solid var(--glass-border); }
+.container { max-width: 1000px; margin: 0 auto; text-align: center; }
+.subtitle { color: var(--accent); letter-spacing: 3px; font-size: 0.75rem; display: block; margin-bottom: 10px; }
+h2 { font-size: 3rem; margin-bottom: 50px; }
+.highlight { color: var(--accent); }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- CARDS & FORM --- */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.card-img-holder { height: 230px; background: #000; border-radius: 15px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--glass-border); }
+.card-img-holder img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+.work-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+.work-card:hover img { transform: scale(1.1); }
+
+/* Stacked Form */
+.contact-form { max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.input-stack { display: flex; flex-direction: column; gap: 15px; }
+input, textarea { 
+    padding: 18px; background: rgba(255,255,255,0.05); 
+    border: 1px solid var(--glass-border); color: white; border-radius: 12px; outline: none; 
+}
+input:focus { border-color: var(--accent); background: rgba(255,255,255,0.08); }
+
+button { 
+    padding: 18px; background: var(--accent); color: black; border: none; 
+    border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s;
+}
+button:hover { background: white; transform: scale(1.02); }
+
+/* Stats in About */
+.stats-row { display: flex; gap: 40px; margin-top: 30px; justify-content: center; }
+.stat-item h4 { font-size: 2rem; color: var(--accent); }
+
+/* --- Add this to your style.css --- */
+
+.home-hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #1a1a2e; /* Deep Navy Fallback */
+}
+
+.hero-image-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* This is your background image URL */
+    background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5); /* Dims the image so text is easy to read */
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* This creates a smooth fade from the image into your site's main color */
+    background: linear-gradient(to bottom, transparent, #1a1a2e);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3; /* Keeps text above the image and overlay */
+    text-align: center;
+    color: white;
+}
+
+/* --- ABOUT SECTION LAYOUT --- */
+.about-wrapper {
+    display: flex;
+    align-items: center; /* Vertically centers the image with the card */
+    justify-content: center;
+    gap: 50px; /* Space between image and card */
+    flex-wrap: wrap; /* Makes it responsive for mobile */
+    margin-top: 40px;
+}
+
+/* Image Styling */
+.about-image {
+    position: relative;
+    flex: 1; /* Takes up equal space */
+    max-width: 450px;
+    min-width: 300px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    display: block;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    z-index: 2;
+    position: relative;
+}
+
+/* The neon glow effect behind the image */
+.image-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 110%;
+    background: radial-gradient(circle, rgba(77, 181, 255, 0.2), transparent 70%);
+    z-index: 1;
+}
+
+/* Ensure the card takes up equal space */
+.about-card {
+    flex: 1;
+    min-width: 300px;
+    text-align: left; /* Aligns text to the left to match the layout */
+}
+
+/* Stats Styling */
+.stats-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.stat-item h4 {
+    font-size: 2rem;
+    color: var(--accent);
+    margin: 0;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+/* MOBILE FIX: Center everything on small screens */
+@media (max-width: 768px) {
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-card {
+        text-align: center;
+    }
+    .stats-row {
+        justify-content: center;
+    }
+}
